@@ -1,0 +1,14 @@
+from rest_framework import serializers
+
+from myapp.models import Portfolio
+
+
+class PortfolioSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model=Portfolio
+
+        fields="__all__"
+
+        read_only_fields="id"
