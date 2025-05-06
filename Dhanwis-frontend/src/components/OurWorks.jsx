@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 
 function OurWorks() {
   return (
-    <div className='space-y-10'>
+    <div className='space-y-10 px-4'>
        <div className='text-center  '>
                     <p className='uppercase text-sm tracking-widest text-gray-900 mb-2'>Our Works</p>
-                    <h1 className='text-2xl lg:text-4xl font-bold  '>Our Past  <span className='text-orange-600 uppercase  cursive-font'>Web Design</span> </h1>
+                    <h1 className='text-2xl lg:text-4xl font-bold  '>Our Past  <span className='text-orange-600 uppercase '>Web Design</span> </h1>
                 </div>
                 <div>
                     <PortfolioCard/>

@@ -7,36 +7,33 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 import PortfolioCard from "./PortfolioCard";
+import GraphicCard from "./GraphicCard";
 
  
 export function UnderlineTabs() {
-  const [activeTab, setActiveTab] = React.useState("html");
+  const [activeTab, setActiveTab] = React.useState("Websites");
   const data = [
     
-    {
-      label: "All",
-      value: "html",
-      desc: <PortfolioCard/>,
-    },
+    
     {
       label: "Websites",
-      value: "reviews",
+      value: "Websites",
       desc: <PortfolioCard/>,
     },
     {
         label: "Graphic Design",
-        value: "design",
-        desc: <PortfolioCard/>,
+        value: "Graphic",
+        desc:   <GraphicCard/>,
       },
    
   ];
   return (
     <Tabs value={activeTab}>
       <TabsHeader
-        className="rounded-none  mx-auto py-6   border-blue-gray-50 bg-transparent "
+        className="rounded-none   mx-auto   border-blue-gray-50  "
         indicatorProps={{
           className:
-            "bg-transparent  border-b-2 p-2 border-gray-900 shadow-none rounded-none",
+            "bg-transparent   border-b-2  border-orange-600 -z-10 shadow-none rounded-none",
         }}
       >
         {data.map(({ label, value }) => (
@@ -44,11 +41,12 @@ export function UnderlineTabs() {
             key={value}
             value={value}
             onClick={() => setActiveTab(value)}
-            className={activeTab === value ? "text-gray-900 font-bold p-2" : "text-gray-500 p-2"}
+            className={activeTab === value ? "text-orange-600 font-semibold text-lg p-2" : "text-gray-500  p-2"}
           >
             {label}
           </Tab>
         ))}
+      
       </TabsHeader>
       <TabsBody>
         {data.map(({ value, desc }) => (

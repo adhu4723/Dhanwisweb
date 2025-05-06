@@ -7,6 +7,7 @@ import Testimonials from '../components/Testimonials'
 import BreadcrumbHeader from '../components/BreadcrumbHeader'
 import Carousel from '../components/Carousel'
 import OurWorks from '../components/OurWorks'
+import BlogSec from '../components/BlogSec'
 
 
 function HomePage() {
@@ -17,6 +18,7 @@ function HomePage() {
    <Whyus/>  
    <OurWorks/>
    <Testimonials/>
+   <BlogSec/>
     </div>
   )
 }

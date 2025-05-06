@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 function Whyus() {
   return (
-    <div className=' space-y-10 relative bg-gray-100 py-20'>
+    <div className=' space-y-10 relative bg-gray-100 px-4 py-20'>
       <div className='text-center  '>
         <p className='uppercase text-sm tracking-widest text-gray-900'>Why Us?</p>
-        <h1 className='text-2xl lg:text-4xl font-bold  '>Why <span className='text-orange-600 uppercase  cursive-font'>Dhanwis</span> </h1>
+        <h1 className='text-2xl lg:text-4xl font-bold  '>Why <span className='text-orange-600 uppercase  '>Dhanwis</span> </h1>
       </div>
       <div className='text-center'>
         {/* <img width={500} src={whyus2} alt="" /> */}

@@ -1,24 +1,69 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Switch from '../components/ToggleButton'
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { FaHeadphonesAlt, FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const navLinkClass = ({ isActive }) =>
+    isActive ? 'text-orange-600 font-semibold' : 'text-gray-800';
+
   return (
-    <div className='flex justify-between items-center py-4 px-6'>
-      <h2>Dhanwis</h2>
-      <div className='lg:flex gap-5 hidden'>
-      <Link to={'/'}>Home</Link>
-      <Link to={'/aboutus'}>About Us</Link>
+    <nav className=" shadow-md px-6 py-4 mb-">
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold text-orange-600">Dhanwis</h2>
 
-      <Link to={'/ourworks'}>Our Work</Link>
-      <Link to={'/contactus'}>Contact Us</Link>
+        {/* Desktop menu */}
+        <div className="hidden lg:flex gap-6">
+          <NavLink to="/" className={navLinkClass}>Home</NavLink>
+          <NavLink to="/aboutus" className={navLinkClass}>About Us</NavLink>
+          <NavLink to="/ourworks" className={navLinkClass}>Our Work</NavLink>
+          <NavLink to="/careers" className={navLinkClass}>Careers</NavLink>
+          <NavLink to="/blog" className={navLinkClass}>Blog</NavLink>
+        </div>
 
+        {/* Right button (always visible) */}
+        <div className="hidden lg:flex">
+          <Link to={'/contactus'} className="bg-orange-600 flex gap-2 items-center text-white py-2 px-4 rounded hover:bg-orange-700">
+            <FaHeadphonesAlt /> Contact Us
+          </Link>
+        </div>
+
+        {/* Mobile hamburger */}
+        <div className="lg:hidden flex items-center">
+          <button onClick={toggleMenu}>
+            {isMobileMenuOpen ? (
+              <FaTimes className="text-2xl text-orange-600" />
+            ) : (
+              <FaBars className="text-2xl text-orange-600" />
+            )}
+          </button>
+        </div>
       </div>
-      <div>
-        <Switch/>
-      </div>
-    </div>
-  )
+
+      {/* Mobile dropdown menu */}
+      {isMobileMenuOpen && (
+        <div className="flex flex-col gap-4 mt-4 lg:hidden">
+          <NavLink to="/" onClick={closeMenu} className={navLinkClass}>Home</NavLink>
+          <NavLink to="/aboutus" onClick={closeMenu} className={navLinkClass}>About Us</NavLink>
+          <NavLink to="/ourworks" onClick={closeMenu} className={navLinkClass}>Our Work</NavLink>
+          <NavLink to="/careers" onClick={closeMenu} className={navLinkClass}>Careers</NavLink>
+          <NavLink to="/blog" onClick={closeMenu} className={navLinkClass}>Blog</NavLink>
+          <Link to={'/contactus'} onClick={closeMenu} className="bg-orange-600 w-fit flex gap-2 items-center text-white py-2 px-4 rounded hover:bg-orange-700">
+            <FaHeadphonesAlt /> Contact Us
+          </Link>
+        </div>
+      )}
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

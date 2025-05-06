@@ -31,7 +31,7 @@ function HeroSection() {
         }, []);
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-5 lg:px-10 '>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-5 lg:px-10 mt-10 '>
             {/* Left Section */}
             <div>
                 <h1 className='text-3xl lg:text-6xl font-extrabold text-[#0B1B35] lg:leading-16'>

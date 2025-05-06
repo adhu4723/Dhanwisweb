@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AshrayaMedicals from '../assets/clients/AshrayaMedicals.png';
 import auricle from '../assets/clients/auricle.png';
 import leal from '../assets/clients/leal.png';
@@ -7,11 +7,13 @@ import easygo from '../assets/clients/easygo.png';
 import savoy from '../assets/clients/savoy.png';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const stats = [
   { icon: 'bi-emoji-smile', value: 232, label: 'Happy Clients' },
   { icon: 'bi-journal-richtext', value: 521, label: 'Projects' },
-  { icon: 'bi-headset', value: 1463, label: 'Hours Of Support' },
+  { icon: 'bi-headset', value: 24, label: 'Hours Of Support' },
   { icon: 'bi-people', value: 15, label: 'Hard Workers' },
 ];
 
@@ -21,32 +23,37 @@ const logos = [
   auricle,
   leal,
   falconcruise,
-  savoy,
+ 
   'https://kannurmirror.com/wp-content/uploads/2022/08/Kannur-Mirrir-HQ-Logo.png',
 ];
 
 const Testimonials = () => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+ 
+    useEffect(() => {
+            AOS.init({ duration: 1000 });
+        }, []);
 
   return (
-    <section className="text-black px-4 py-10 bg-gray-100">
-      <div className="text-center">
+    <section className="text-black px-4 py-10 bg-gray-100 space-y-4">
+      <div className="text-center ">
         <p className="uppercase text-sm tracking-widest text-gray-900">Testimonials</p>
         <h2 className="text-3xl uppercase md:text-4xl font-bold text-black">
-          Our <span className="text-orange-600 cursive-font">Happy Clients</span>
+          Our <span className="text-orange-600 ">Happy Clients</span>
         </h2>
       </div>
 
-      <div ref={ref} className="flex flex-wrap justify-center gap-6 py-10 p-4">
+      <div  className="grid grid-cols-2 lg:grid-cols-4  justify-center gap-2 lg:gap-6 lg:py-10 ">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className={`bg-white w-full lg:w-60 p-6 rounded-lg shadow-md text-center flex flex-col items-center transform transition-all duration-700 ease-in-out
-              ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+            className={`bg-white w-full  p-6 rounded-lg shadow-md text-center flex flex-col items-center transform transition-all duration-700 ease-in-out
+             `}
           >
             <i className={`bi ${stat.icon} text-orange-500 text-4xl mb-4`}></i>
             <h2 className="text-3xl font-bold text-gray-800">
-              {inView ? <CountUp end={stat.value} duration={2} /> : '0'}
+               <CountUp end={stat.value} duration={2} />
             </h2>
             <p className="text-gray-600">{stat.label}</p>
           </div>
@@ -54,7 +61,8 @@ const Testimonials = () => {
       </div>
 
       <div className="overflow-hidden whitespace-nowrap py-2 ">
-        <div className="marquee-track flex items-center gap-10 whitespace-nowrap animate-marquee">
+        <marquee behavior="" direction="">
+        <div className=" flex items-center gap-10 whitespace-nowrap ">
           {logos.concat(logos).map((logo, idx) => (
             <img
               key={idx}
@@ -65,6 +73,8 @@ const Testimonials = () => {
             />
           ))}
         </div>
+        </marquee>
+     
       </div>
     </section>
   );
